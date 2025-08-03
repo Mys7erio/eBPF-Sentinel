@@ -4,6 +4,7 @@
 #include <linux/if_ether.h>
 #include <linux/ip.h>
 #include <linux/tcp.h>
+#include <linux/udp.h>
 #include <linux/in.h>
 
 // Define a struct for the packet features you want to send to userspace.
@@ -58,9 +59,16 @@ int xdp_firewall(struct xdp_md *ctx) {
 
     // --- Send to Userspace for Analysis ---
     // For this example, we only analyze TCP packets.
-    if (ip->protocol != IPPROTO_TCP) {
+    if (ip->protocol != IPPROTO_UDP) {
         return XDP_PASS;
     }
+
+    // Parse the UDP header instead of the TCP header.
+    struct udphdr *udp = (void *)ip + sizeof(*ip);
+    if ((void *)udp + sizeof(*udp) > data_end) {
+        return XDP_PASS;
+    }
+
 
     struct tcphdr *tcp = (void *)ip + sizeof(*ip);
     if ((void *)tcp + sizeof(*tcp) > data_end) {

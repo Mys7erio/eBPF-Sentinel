@@ -116,7 +116,8 @@ func main() {
 			// prediction, err := model.Predict(features)
 			// For this example, we'll simulate a "malicious" prediction.
 			isMalicious := (event.SrcPort % 100 == 0) // Example logic: block ports ending in 00.
-
+			log.Printf("Received packet: SrcIP: %s, DstIP: %s, SrcPort: %d, DstPort: %d", 
+    intToIP(event.SrcIP), intToIP(event.DestIP), event.SrcPort, event.DestPort)
 			if isMalicious {
 				log.Printf("Malicious activity detected from source IP: %s", intToIP(event.SrcIP))
 
