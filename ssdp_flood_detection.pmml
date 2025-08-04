@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PMML xmlns="http://www.dmg.org/PMML-4_4" version="4.4.1">
+    <Header copyright="Copyright (c) 2021 Software AG" description="Default description">
+        <Application name="Nyoka" version="5.5.0"/>
+        <Timestamp>2025-08-03 16:42:25.076427</Timestamp>
+    </Header>
+    <DataDictionary numberOfFields="4">
+        <DataField name="Source Port" optype="continuous" dataType="double"/>
+        <DataField name="Destination Port" optype="continuous" dataType="double"/>
+        <DataField name="Protocol" optype="continuous" dataType="double"/>
+        <DataField name="your_target_column_name" optype="categorical" dataType="integer">
+            <Value value="0"/>
+            <Value value="1"/>
+        </DataField>
+    </DataDictionary>
+    <TreeModel modelName="DecisionTreeClassifier" functionName="classification" missingValuePenalty="1.0">
+        <MiningSchema>
+            <MiningField name="Source Port" usageType="active" optype="continuous"/>
+            <MiningField name="Destination Port" usageType="active" optype="continuous"/>
+            <MiningField name="Protocol" usageType="active" optype="continuous"/>
+            <MiningField name="your_target_column_name" usageType="target" optype="categorical"/>
+        </MiningSchema>
+        <Output>
+            <OutputField name="probability_0" optype="continuous" dataType="double" feature="probability" value="0"/>
+            <OutputField name="probability_1" optype="continuous" dataType="double" feature="probability" value="1"/>
+            <OutputField name="predicted_your_target_column_name" optype="categorical" dataType="integer" feature="predictedValue"/>
+        </Output>
+        <Node id="0" recordCount="1827961.0">
+            <True/>
+            <Node id="1" recordCount="698.0">
+                <SimplePredicate field="Protocol" operator="lessOrEqual" value="11.5"/>
+                <Node id="2" recordCount="390.0">
+                    <SimplePredicate field="Source Port" operator="lessOrEqual" value="51986.0"/>
+                    <Node id="3" recordCount="268.0">
+                        <SimplePredicate field="Destination Port" operator="lessOrEqual" value="51873.0"/>
+                        <Node id="4" score="0" recordCount="54.0">
+                            <SimplePredicate field="Protocol" operator="lessOrEqual" value="3.0"/>
+                            <ScoreDistribution value="0" recordCount="39.0" confidence="0.7222222222222222"/>
+                            <ScoreDistribution value="1" recordCount="15.0" confidence="0.2777777777777778"/>
+                        </Node>
+                        <Node id="5" recordCount="214.0">
+                            <SimplePredicate field="Protocol" operator="greaterThan" value="3.0"/>
+                            <Node id="6" recordCount="193.0">
+                                <SimplePredicate field="Source Port" operator="lessOrEqual" value="49933.5"/>
+                                <Node id="7" score="1" recordCount="115.0">
+                                    <SimplePredicate field="Destination Port" operator="lessOrEqual" value="291.0"/>
+                                    <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                    <ScoreDistribution value="1" recordCount="115.0" confidence="1.0"/>
+                                </Node>
+                                <Node id="8" recordCount="78.0">
+                                    <SimplePredicate field="Destination Port" operator="greaterThan" value="291.0"/>
+                                    <Node id="9" recordCount="7.0">
+                                        <SimplePredicate field="Destination Port" operator="lessOrEqual" value="444.0"/>
+                                        <Node id="10" score="0" recordCount="6.0">
+                                            <SimplePredicate field="Source Port" operator="lessOrEqual" value="37632.0"/>
+                                            <ScoreDistribution value="0" recordCount="6.0" confidence="1.0"/>
+                                            <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                        </Node>
+                                        <Node id="11" score="1" recordCount="1.0">
+                                            <SimplePredicate field="Source Port" operator="greaterThan" value="37632.0"/>
+                                            <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                            <ScoreDistribution value="1" recordCount="1.0" confidence="1.0"/>
+                                        </Node>
+                                    </Node>
+                                    <Node id="12" recordCount="71.0">
+                                        <SimplePredicate field="Destination Port" operator="greaterThan" value="444.0"/>
+                                        <Node id="13" score="1" recordCount="61.0">
+                                            <SimplePredicate field="Source Port" operator="lessOrEqual" value="291.0"/>
+                                            <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                            <ScoreDistribution value="1" recordCount="61.0" confidence="1.0"/>
+                                        </Node>
+                                        <Node id="14" recordCount="10.0">
+                                            <SimplePredicate field="Source Port" operator="greaterThan" value="291.0"/>
+                                            <Node id="15" score="1" recordCount="9.0">
+                                                <SimplePredicate field="Destination Port" operator="lessOrEqual" value="30649.5"/>
+                                                <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                                <ScoreDistribution value="1" recordCount="9.0" confidence="1.0"/>
+                                            </Node>
+                                            <Node id="16" score="0" recordCount="1.0">
+                                                <SimplePredicate field="Destination Port" operator="greaterThan" value="30649.5"/>
+                                                <ScoreDistribution value="0" recordCount="1.0" confidence="1.0"/>
+                                                <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                            </Node>
+                                        </Node>
+                                    </Node>
+                                </Node>
+                            </Node>
+                            <Node id="17" recordCount="21.0">
+                                <SimplePredicate field="Source Port" operator="greaterThan" value="49933.5"/>
+                                <Node id="18" score="0" recordCount="5.0">
+                                    <SimplePredicate field="Source Port" operator="lessOrEqual" value="50187.5"/>
+                                    <ScoreDistribution value="0" recordCount="5.0" confidence="1.0"/>
+                                    <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                </Node>
+                                <Node id="19" recordCount="16.0">
+                                    <SimplePredicate field="Source Port" operator="greaterThan" value="50187.5"/>
+                                    <Node id="20" score="1" recordCount="14.0">
+                                        <SimplePredicate field="Source Port" operator="lessOrEqual" value="51873.0"/>
+                                        <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                        <ScoreDistribution value="1" recordCount="14.0" confidence="1.0"/>
+                                    </Node>
+                                    <Node id="21" recordCount="2.0">
+                                        <SimplePredicate field="Source Port" operator="greaterThan" value="51873.0"/>
+                                        <Node id="22" score="0" recordCount="1.0">
+                                            <SimplePredicate field="Destination Port" operator="lessOrEqual" value="4761.5"/>
+                                            <ScoreDistribution value="0" recordCount="1.0" confidence="1.0"/>
+                                            <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                        </Node>
+                                        <Node id="23" score="1" recordCount="1.0">
+                                            <SimplePredicate field="Destination Port" operator="greaterThan" value="4761.5"/>
+                                            <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                            <ScoreDistribution value="1" recordCount="1.0" confidence="1.0"/>
+                                        </Node>
+                                    </Node>
+                                </Node>
+                            </Node>
+                        </Node>
+                    </Node>
+                    <Node id="24" recordCount="122.0">
+                        <SimplePredicate field="Destination Port" operator="greaterThan" value="51873.0"/>
+                        <Node id="25" recordCount="98.0">
+                            <SimplePredicate field="Destination Port" operator="lessOrEqual" value="57865.5"/>
+                            <Node id="26" recordCount="46.0">
+                                <SimplePredicate field="Destination Port" operator="lessOrEqual" value="57156.5"/>
+                                <Node id="27" score="0" recordCount="24.0">
+                                    <SimplePredicate field="Destination Port" operator="lessOrEqual" value="52089.5"/>
+                                    <ScoreDistribution value="0" recordCount="24.0" confidence="1.0"/>
+                                    <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                </Node>
+                                <Node id="28" recordCount="22.0">
+                                    <SimplePredicate field="Destination Port" operator="greaterThan" value="52089.5"/>
+                                    <Node id="29" score="1" recordCount="19.0">
+                                        <SimplePredicate field="Source Port" operator="lessOrEqual" value="261.5"/>
+                                        <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                        <ScoreDistribution value="1" recordCount="19.0" confidence="1.0"/>
+                                    </Node>
+                                    <Node id="30" recordCount="3.0">
+                                        <SimplePredicate field="Source Port" operator="greaterThan" value="261.5"/>
+                                        <Node id="31" score="0" recordCount="1.0">
+                                            <SimplePredicate field="Source Port" operator="lessOrEqual" value="444.0"/>
+                                            <ScoreDistribution value="0" recordCount="1.0" confidence="1.0"/>
+                                            <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                        </Node>
+                                        <Node id="32" score="1" recordCount="2.0">
+                                            <SimplePredicate field="Source Port" operator="greaterThan" value="444.0"/>
+                                            <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                            <ScoreDistribution value="1" recordCount="2.0" confidence="1.0"/>
+                                        </Node>
+                                    </Node>
+                                </Node>
+                            </Node>
+                            <Node id="33" score="0" recordCount="52.0">
+                                <SimplePredicate field="Destination Port" operator="greaterThan" value="57156.5"/>
+                                <ScoreDistribution value="0" recordCount="52.0" confidence="1.0"/>
+                                <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                            </Node>
+                        </Node>
+                        <Node id="34" score="1" recordCount="24.0">
+                            <SimplePredicate field="Destination Port" operator="greaterThan" value="57865.5"/>
+                            <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                            <ScoreDistribution value="1" recordCount="24.0" confidence="1.0"/>
+                        </Node>
+                    </Node>
+                </Node>
+                <Node id="35" recordCount="308.0">
+                    <SimplePredicate field="Source Port" operator="greaterThan" value="51986.0"/>
+                    <Node id="36" recordCount="251.0">
+                        <SimplePredicate field="Source Port" operator="lessOrEqual" value="57993.0"/>
+                        <Node id="37" recordCount="97.0">
+                            <SimplePredicate field="Source Port" operator="lessOrEqual" value="57402.0"/>
+                            <Node id="38" score="0" recordCount="57.0">
+                                <SimplePredicate field="Source Port" operator="lessOrEqual" value="52574.5"/>
+                                <ScoreDistribution value="0" recordCount="57.0" confidence="1.0"/>
+                                <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                            </Node>
+                            <Node id="39" recordCount="40.0">
+                                <SimplePredicate field="Source Port" operator="greaterThan" value="52574.5"/>
+                                <Node id="40" score="1" recordCount="33.0">
+                                    <SimplePredicate field="Destination Port" operator="lessOrEqual" value="261.5"/>
+                                    <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                    <ScoreDistribution value="1" recordCount="33.0" confidence="1.0"/>
+                                </Node>
+                                <Node id="41" recordCount="7.0">
+                                    <SimplePredicate field="Destination Port" operator="greaterThan" value="261.5"/>
+                                    <Node id="42" score="0" recordCount="5.0">
+                                        <SimplePredicate field="Destination Port" operator="lessOrEqual" value="5271.0"/>
+                                        <ScoreDistribution value="0" recordCount="5.0" confidence="1.0"/>
+                                        <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                    </Node>
+                                    <Node id="43" score="1" recordCount="2.0">
+                                        <SimplePredicate field="Destination Port" operator="greaterThan" value="5271.0"/>
+                                        <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                        <ScoreDistribution value="1" recordCount="2.0" confidence="1.0"/>
+                                    </Node>
+                                </Node>
+                            </Node>
+                        </Node>
+                        <Node id="44" score="0" recordCount="154.0">
+                            <SimplePredicate field="Source Port" operator="greaterThan" value="57402.0"/>
+                            <ScoreDistribution value="0" recordCount="154.0" confidence="1.0"/>
+                            <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                        </Node>
+                    </Node>
+                    <Node id="45" recordCount="57.0">
+                        <SimplePredicate field="Source Port" operator="greaterThan" value="57993.0"/>
+                        <Node id="46" score="0" recordCount="2.0">
+                            <SimplePredicate field="Destination Port" operator="lessOrEqual" value="21.5"/>
+                            <ScoreDistribution value="0" recordCount="2.0" confidence="1.0"/>
+                            <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                        </Node>
+                        <Node id="47" recordCount="55.0">
+                            <SimplePredicate field="Destination Port" operator="greaterThan" value="21.5"/>
+                            <Node id="48" recordCount="11.0">
+                                <SimplePredicate field="Source Port" operator="lessOrEqual" value="59667.5"/>
+                                <Node id="49" score="1" recordCount="8.0">
+                                    <SimplePredicate field="Source Port" operator="lessOrEqual" value="59555.5"/>
+                                    <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                    <ScoreDistribution value="1" recordCount="8.0" confidence="1.0"/>
+                                </Node>
+                                <Node id="50" score="0" recordCount="3.0">
+                                    <SimplePredicate field="Source Port" operator="greaterThan" value="59555.5"/>
+                                    <ScoreDistribution value="0" recordCount="3.0" confidence="1.0"/>
+                                    <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                </Node>
+                            </Node>
+                            <Node id="51" score="1" recordCount="44.0">
+                                <SimplePredicate field="Source Port" operator="greaterThan" value="59667.5"/>
+                                <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                <ScoreDistribution value="1" recordCount="44.0" confidence="1.0"/>
+                            </Node>
+                        </Node>
+                    </Node>
+                </Node>
+            </Node>
+            <Node id="52" recordCount="1827263.0">
+                <SimplePredicate field="Protocol" operator="greaterThan" value="11.5"/>
+                <Node id="53" recordCount="319.0">
+                    <SimplePredicate field="Destination Port" operator="lessOrEqual" value="54.0"/>
+                    <Node id="54" score="1" recordCount="140.0">
+                        <SimplePredicate field="Destination Port" operator="lessOrEqual" value="52.5"/>
+                        <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                        <ScoreDistribution value="1" recordCount="140.0" confidence="1.0"/>
+                    </Node>
+                    <Node id="55" recordCount="179.0">
+                        <SimplePredicate field="Destination Port" operator="greaterThan" value="52.5"/>
+                        <Node id="56" score="1" recordCount="1.0">
+                            <SimplePredicate field="Source Port" operator="lessOrEqual" value="23849.0"/>
+                            <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                            <ScoreDistribution value="1" recordCount="1.0" confidence="1.0"/>
+                        </Node>
+                        <Node id="57" score="0" recordCount="178.0">
+                            <SimplePredicate field="Source Port" operator="greaterThan" value="23849.0"/>
+                            <ScoreDistribution value="0" recordCount="178.0" confidence="1.0"/>
+                            <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                        </Node>
+                    </Node>
+                </Node>
+                <Node id="58" recordCount="1826944.0">
+                    <SimplePredicate field="Destination Port" operator="greaterThan" value="54.0"/>
+                    <Node id="59" score="0" recordCount="5.0">
+                        <SimplePredicate field="Source Port" operator="lessOrEqual" value="325.0"/>
+                        <ScoreDistribution value="0" recordCount="5.0" confidence="1.0"/>
+                        <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                    </Node>
+                    <Node id="60" recordCount="1826939.0">
+                        <SimplePredicate field="Source Port" operator="greaterThan" value="325.0"/>
+                        <Node id="61" recordCount="30899.0">
+                            <SimplePredicate field="Source Port" operator="lessOrEqual" value="5382.5"/>
+                            <Node id="62" score="1" recordCount="30898.0">
+                                <SimplePredicate field="Source Port" operator="lessOrEqual" value="3187.5"/>
+                                <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                <ScoreDistribution value="1" recordCount="30898.0" confidence="1.0"/>
+                            </Node>
+                            <Node id="63" score="0" recordCount="1.0">
+                                <SimplePredicate field="Source Port" operator="greaterThan" value="3187.5"/>
+                                <ScoreDistribution value="0" recordCount="1.0" confidence="1.0"/>
+                                <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                            </Node>
+                        </Node>
+                        <Node id="64" score="1" recordCount="1796040.0">
+                            <SimplePredicate field="Source Port" operator="greaterThan" value="5382.5"/>
+                            <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                            <ScoreDistribution value="1" recordCount="1796040.0" confidence="1.0"/>
+                        </Node>
+                    </Node>
+                </Node>
+            </Node>
+        </Node>
+    </TreeModel>
+</PMML>
