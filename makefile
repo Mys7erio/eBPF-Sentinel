@@ -7,6 +7,8 @@ INCLUDES = -I /usr/include/x86_64-linux-gnu
 SOURCE = eBPF-sentinel.c
 OBJECT = eBPF-sentinel.o
 
+OPENWRT_BIN = openwrt-main
+
 # The default target. This is what 'make' will build.
 all: $(OBJECT)
 
@@ -14,6 +16,11 @@ all: $(OBJECT)
 $(OBJECT): $(SOURCE)
 	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
+# Build the Go static binary for Linux AMD64
+openwrt:
+	CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o $(OPENWRT_BIN) main.go
+
 # Clean up build artifacts
 clean:
-	rm -f $(OBJECT)
+	rm -f $(OBJECT) openwrt_ebpf_static
+

@@ -8,6 +8,7 @@ import (
 	"os"
 	"os/signal"
 	"syscall"
+	_ "embed"
 
 	"github.com/cilium/ebpf"
 	"github.com/cilium/ebpf/link"
@@ -53,7 +54,7 @@ func main() {
 	defer objs.EventsMap.Close()
 
 	// --- Attach XDP Program ---
-	ifaceName := "ens33" // Change this to your network interface.
+	ifaceName := "eth0" // Change this to your network interface.
 	iface, err := net.InterfaceByName(ifaceName)
 	if err != nil {
 		log.Fatalf("failed to get interface %s: %v", ifaceName, err)
