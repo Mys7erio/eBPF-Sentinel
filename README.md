@@ -1,4 +1,5 @@
 # eBPF Sentinel: SSDP Flood Detection with eBPF and ML
+[![DOI](https://zenodo.org/badge/1031386959.svg)](https://doi.org/10.5281/zenodo.16792155)
 
 <div style="text-align: justify;">
 
